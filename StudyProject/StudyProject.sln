@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudyProject", "StudyProject\StudyProject.csproj", "{C7C91795-663E-4B83-9DEE-C216DF3B9779}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excel.Util", "Excel.Util\Excel.Util.csproj", "{4F39B21E-1943-474C-8347-C7EB9A468EB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Excel.Util", "Excel.Util\Excel.Util.csproj", "{4F39B21E-1943-474C-8347-C7EB9A468EB9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLCreate", "..\SQLCreate\SQLCreate\SQLCreate.csproj", "{5E40E660-2DCE-484C-BD0F-101C08C162D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{4F39B21E-1943-474C-8347-C7EB9A468EB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F39B21E-1943-474C-8347-C7EB9A468EB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F39B21E-1943-474C-8347-C7EB9A468EB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E40E660-2DCE-484C-BD0F-101C08C162D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E40E660-2DCE-484C-BD0F-101C08C162D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E40E660-2DCE-484C-BD0F-101C08C162D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E40E660-2DCE-484C-BD0F-101C08C162D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
