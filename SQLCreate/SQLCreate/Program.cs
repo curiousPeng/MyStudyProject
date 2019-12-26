@@ -18,6 +18,10 @@ namespace SQLCreate
             var sqlConnStr = "User ID=db_erp;Password=erp.2019;Data Source=172.16.10.220:1521/xe";
             //1.读出数据库信息
             List<TableFileds> Tables = GetUserAllTables(sqlConnStr);
+            List<string> IgnoreTable = new List<string>
+            {
+
+            };//要忽略的表名放这里面,大写的表名。
             Console.WriteLine("数据表信息读取完毕，开始读取表数据并生成文件");
             string outPutPath = "E:\\output\\erp\\sql\\createFile\\";
             int currentPage = 1;
@@ -28,6 +32,11 @@ namespace SQLCreate
             //4.生成sql语句。
             foreach (var table in Tables)
             {
+                if (IgnoreTable.Contains(table.table_name))
+                {
+                    Console.WriteLine($"表{table.table_name}设置为不读取数据，跳过！");
+                    continue;
+                }
                 Console.WriteLine($"开始读取表{table.table_name}的数据");
                 var rowNum = GetTableRowsNum(table.table_name, sqlConnStr);
                 if (rowNum < 1)
@@ -65,8 +74,8 @@ namespace SQLCreate
                             columnStr += string.Format("{0}{1}", column.column_name, ",");
                         }
                         columnStr = string.Format("{0}{1}", columnStr.Remove(columnStr.LastIndexOf(","), 1), ")");
-                        
-                        
+
+
 
                         for (var j = 0; j < list.Count; j++)
                         {
@@ -75,13 +84,13 @@ namespace SQLCreate
                             foreach (var column in columns)
                             {
                                 var value = values[column.column_name].ToString();
-                                if(column.data_type == "NUMBER")
+                                if (column.data_type == "NUMBER")
                                 {
                                     valueStr += string.Format("{0}{1}", value, ",");
                                 }
-                                else if(column.data_type == "DATE")
+                                else if (column.data_type == "DATE")
                                 {
-                                    valueStr += string.Format("{0}{1}", "TO_DATE('"+ value + "', 'SYYYY/MM/DD HH24:MI:SS')", ",");
+                                    valueStr += string.Format("{0}{1}", "TO_DATE('" + value + "', 'SYYYY/MM/DD HH24:MI:SS')", ",");
                                 }
                                 else
                                 {

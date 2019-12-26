@@ -14,7 +14,7 @@ namespace StudyProject
     {
         static Action<string> Write = Console.WriteLine;
 
-        public static void Main(string[] args)
+        public static void ReflectionMain()
         {
             Write("Let's compile!");
 
