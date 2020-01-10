@@ -24,7 +24,7 @@ namespace StudyProject.Other
         }
 
         /// <summary>
-        /// 冒泡排序泛型+委托
+        /// 冒泡排序泛型自定义比较规则
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="sortArray"></param>
