@@ -1,4 +1,5 @@
 ﻿using StudyProject.Example.Excel;
+using StudyProject.ThreadPool.Demo;
 using System;
 
 namespace StudyProject
@@ -13,6 +14,7 @@ namespace StudyProject
             //{
             //    Console.WriteLine(item.itemName);
             //}
+            CancellTaskDemo.RunDemo();
             Console.WriteLine("Print Enter exit Program!");
             Console.Read();
         }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace StudyProject.ThreadPool
+namespace StudyProject.ThreadPoolDemo
 {
     public class Demo
     {

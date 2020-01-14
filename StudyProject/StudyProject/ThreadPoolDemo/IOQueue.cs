@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace StudyProject.ThreadPool
+namespace StudyProject.ThreadPoolDemo
 {
     /// <summary>
     /// 简易实用的线程池
