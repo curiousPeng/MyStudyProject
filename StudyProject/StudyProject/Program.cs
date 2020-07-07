@@ -1,4 +1,5 @@
-﻿using StudyProject.Example.Excel;
+﻿using StudyProject.DesignPattern.Prototype;
+using StudyProject.Example.Excel;
 using StudyProject.ThreadPool.Demo;
 using StudyProject.ThreadPoolDemo;
 using System;
@@ -15,7 +16,8 @@ namespace StudyProject
             //{
             //    Console.WriteLine(item.itemName);
             //}
-            CancellTaskSource.StartANewTask();
+            //CancellTaskSource.StartANewTask();
+            new PrototypeDemo().demo();
             Console.WriteLine("Print Enter exit Program!");
             Console.Read();
         }
