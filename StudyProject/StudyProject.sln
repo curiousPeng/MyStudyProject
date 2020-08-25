@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLCreate", "..\SQLCreate\S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketTestApp", "SocketTestApp\SocketTestApp.csproj", "{9B430BEE-EDEE-4811-8C66-B4A5DC63F802}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OldFramework", "OldFramework\OldFramework.csproj", "{AC755C7D-39DC-444A-B6FE-F59B43CA1E11}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{9B430BEE-EDEE-4811-8C66-B4A5DC63F802}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B430BEE-EDEE-4811-8C66-B4A5DC63F802}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B430BEE-EDEE-4811-8C66-B4A5DC63F802}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC755C7D-39DC-444A-B6FE-F59B43CA1E11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC755C7D-39DC-444A-B6FE-F59B43CA1E11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC755C7D-39DC-444A-B6FE-F59B43CA1E11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC755C7D-39DC-444A-B6FE-F59B43CA1E11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
