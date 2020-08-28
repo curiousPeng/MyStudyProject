@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketTestApp", "SocketTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OldFramework", "OldFramework\OldFramework.csproj", "{AC755C7D-39DC-444A-B6FE-F59B43CA1E11}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Net Framework", ".Net Framework", "{B847A3FB-6B96-4216-8853-80CD5BBC6F85}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Net Core", ".Net Core", "{DD8A1249-A979-4AA8-AD62-AB56B8545C4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OldFrameworkTests", "OldFrameworkTests\OldFrameworkTests.csproj", "{324E7181-605A-486E-9C7C-5049B5721D70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,9 +45,20 @@ Global
 		{AC755C7D-39DC-444A-B6FE-F59B43CA1E11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC755C7D-39DC-444A-B6FE-F59B43CA1E11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC755C7D-39DC-444A-B6FE-F59B43CA1E11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{324E7181-605A-486E-9C7C-5049B5721D70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{324E7181-605A-486E-9C7C-5049B5721D70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{324E7181-605A-486E-9C7C-5049B5721D70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{324E7181-605A-486E-9C7C-5049B5721D70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C7C91795-663E-4B83-9DEE-C216DF3B9779} = {DD8A1249-A979-4AA8-AD62-AB56B8545C4A}
+		{5E40E660-2DCE-484C-BD0F-101C08C162D6} = {DD8A1249-A979-4AA8-AD62-AB56B8545C4A}
+		{9B430BEE-EDEE-4811-8C66-B4A5DC63F802} = {B847A3FB-6B96-4216-8853-80CD5BBC6F85}
+		{AC755C7D-39DC-444A-B6FE-F59B43CA1E11} = {B847A3FB-6B96-4216-8853-80CD5BBC6F85}
+		{324E7181-605A-486E-9C7C-5049B5721D70} = {B847A3FB-6B96-4216-8853-80CD5BBC6F85}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7D884518-DC6C-413C-B319-E6042E8329A8}

@@ -31,7 +31,7 @@ namespace StudyProject.IISOperation
             Console.WriteLine();
         }
 
-        private static void Main(string[] args)
+        public static void Publish()
         {
             Console.WriteLine("停止IIS服务器");
             StopIIS();
