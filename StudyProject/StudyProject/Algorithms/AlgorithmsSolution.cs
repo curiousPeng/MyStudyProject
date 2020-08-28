@@ -24,6 +24,10 @@ namespace StudyProject.Algorithms
                     if (i == j)
                     {
                         j++;
+                        if (j == nums.Length)
+                        {
+                            return null;
+                        }
                     }
                     var tmp = nums[i] + nums[j];
                     if (tmp == target)
@@ -39,6 +43,7 @@ namespace StudyProject.Algorithms
             if (!isOk)
             {
                 Console.Write("未找到合适的答案");
+                return null;
             }
             return result;
         }

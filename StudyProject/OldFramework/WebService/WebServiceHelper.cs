@@ -12,7 +12,7 @@ using System.Web.Services.Description;
 
 namespace OldFramework.WebService
 {
-    class WebServiceHelper
+    public class WebServiceHelper
     {
         /// <summary>
         /// 
@@ -21,7 +21,7 @@ namespace OldFramework.WebService
         /// <param name="methodname">调用的方法名</param>
         /// <param name="args">把webservices里需要的参数按顺序放到这个object[]里</param>
         /// <returns></returns>
-        private object InvokeWebService(string url, string methodname, object[] args)
+        public object InvokeWebService(string url, string methodname, object[] args)
         {
 
             //这里的namespace是需引用的webservices的命名空间，在这里是写死的，大家可以加一个参数从外面传进来。  
