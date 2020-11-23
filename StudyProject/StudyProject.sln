@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gRPCClientDemo", "gRPCClien
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Util", "Util", "{B8EFDB70-749D-4727-B4C0-91F62C9DF7EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeetCode", "LeetCode\LeetCode.csproj", "{4C4E4E7C-59E9-4EEB-8BD4-3F7409223D04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -145,6 +147,18 @@ Global
 		{687CAB50-D648-4EF2-8E50-45541FDF59F3}.Release|iPhone.Build.0 = Release|Any CPU
 		{687CAB50-D648-4EF2-8E50-45541FDF59F3}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{687CAB50-D648-4EF2-8E50-45541FDF59F3}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{4C4E4E7C-59E9-4EEB-8BD4-3F7409223D04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C4E4E7C-59E9-4EEB-8BD4-3F7409223D04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C4E4E7C-59E9-4EEB-8BD4-3F7409223D04}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{4C4E4E7C-59E9-4EEB-8BD4-3F7409223D04}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{4C4E4E7C-59E9-4EEB-8BD4-3F7409223D04}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{4C4E4E7C-59E9-4EEB-8BD4-3F7409223D04}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{4C4E4E7C-59E9-4EEB-8BD4-3F7409223D04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C4E4E7C-59E9-4EEB-8BD4-3F7409223D04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C4E4E7C-59E9-4EEB-8BD4-3F7409223D04}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{4C4E4E7C-59E9-4EEB-8BD4-3F7409223D04}.Release|iPhone.Build.0 = Release|Any CPU
+		{4C4E4E7C-59E9-4EEB-8BD4-3F7409223D04}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{4C4E4E7C-59E9-4EEB-8BD4-3F7409223D04}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -159,6 +173,7 @@ Global
 		{5E1EECE0-8D26-47F5-A20F-DC19C1385F57} = {DD8A1249-A979-4AA8-AD62-AB56B8545C4A}
 		{C656E7BD-62E0-4B21-A91C-3DC93E4AA7C9} = {DD8A1249-A979-4AA8-AD62-AB56B8545C4A}
 		{687CAB50-D648-4EF2-8E50-45541FDF59F3} = {DD8A1249-A979-4AA8-AD62-AB56B8545C4A}
+		{4C4E4E7C-59E9-4EEB-8BD4-3F7409223D04} = {DD8A1249-A979-4AA8-AD62-AB56B8545C4A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7D884518-DC6C-413C-B319-E6042E8329A8}

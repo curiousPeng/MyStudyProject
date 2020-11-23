@@ -167,6 +167,33 @@ namespace StudyProject.Algorithms
         }
 
         /// <summary>
+        /// 找出字符串中的最长回文
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static string longestPalindrome(string s)
+        {
+            int n = s.Length;
+            bool[,] P = new bool[n, n];
+            string result = "";
+            //遍历所有的长度
+            for (int len = 1; len <= n; len++)
+            {
+                for (int start = 0; start < n; start++)
+                {
+                    int end = start + len - 1;
+                    if (end >= n)
+                        break;
+                    P[start, end] = (len == 1 || len == 2 || P[start + 1, end - 1]) && s[start] == s[end];
+                    if (P[start, end] && len > result.Length)
+                    {
+                        result = s.Substring(start, len);
+                    }
+                }
+            }
+            return result;
+        }
+        /// <summary>
         /// 找出最长无重复子串的个数
         /// </summary>
         /// <param name="s"></param>
@@ -350,13 +377,16 @@ namespace StudyProject.Algorithms
         /// </summary>
         /// <param name="height"></param>
         /// <returns></returns>
-        public static int MaxAreaOfPointers(int[] height) {
+        public static int MaxAreaOfPointers(int[] height)
+        {
             int i = 0;
             int j = height.Length - 1;
             int area = 0;
-            while (i < j) {
+            while (i < j)
+            {
                 area = Math.Max(area, Math.Min(height[i], height[j]) * (j - i));
-                if (height[i] < height[j]) {
+                if (height[i] < height[j])
+                {
                     i++;
                 }
                 else

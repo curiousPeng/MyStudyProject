@@ -10,14 +10,14 @@ namespace StudyProject
     {
         static void Main(string[] args)
         {
-            //TODO ,excel的导入demo
+            //excel的导入demo
             //var list = ExcelDemo.Inport();
-            //foreach(var item in list)
+            //foreach (var item in list)
             //{
             //    Console.WriteLine(item.itemName);
             //}
             //CancellTaskSource.StartANewTask();
-            new PrototypeDemo().demo();
+            //new PrototypeDemo().demo();
             Console.WriteLine("Print Enter exit Program!");
             Console.Read();
         }
