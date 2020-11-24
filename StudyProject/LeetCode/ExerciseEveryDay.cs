@@ -37,11 +37,11 @@ namespace LeetCode
         /// <returns></returns>
         public static ListNode InsertionSortList(ListNode head)
         {
-            if(head==null || head.next == null)
+            if (head == null || head.next == null)
             {
                 return head;
             }
-            ListNode dummyHead = new ListNode(0),lastSorted,curr;
+            ListNode dummyHead = new ListNode(0), lastSorted, curr;
             dummyHead.next = head;
             lastSorted = head;
             curr = head.next;
@@ -54,7 +54,7 @@ namespace LeetCode
                 else
                 {
                     ListNode prev = dummyHead;
-                    while(prev.next.val <= curr.val)
+                    while (prev.next.val <= curr.val)
                     {
                         prev = prev.next;
                     }
@@ -71,6 +71,71 @@ namespace LeetCode
             public int val;
             public ListNode next;
             public ListNode(int x) { val = x; }
+        }
+        /// <summary>
+        /// 2020-11-23 找到数组中，最少需要多个个数字能贯穿全部数组
+        /// xstart ≤ x ≤ xend 代表可以贯穿
+        /// </summary>
+        /// <param name="points"></param>
+        public static int FindMinArrowShots(int[][] points)
+        {
+            if (points.Length < 1)
+            {
+                return 0;
+            }
+            Array.Sort(points, (int[] a, int[] b) => a[0] > b[0] ? 1 : -1);
+
+            int result = 1;
+            var l = points[points.Length - 1][0];
+            for (var i = points.Length - 1; i >= 0; i--)
+            {
+                if (points[i][1] < l)
+                {
+                    l = points[i][0];
+                    result++;
+                }
+            }
+            return result;
+        }
+
+        public static int CountNodes(TreeNode root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+            int left = countLevel(root.left);//计算层级
+            int right = countLevel(root.right);
+            if (left == right)
+            {//如果左右层级相等，说明他是满二叉树，左边是必满的，所以计算右边与之相加
+                return CountNodes(root.right) + (1 << left);
+            }
+            else
+            {//不相等，说明右数是不满的，但倒数第二层肯定是满的，直接2^right得到右边全部数量，然后左边重新计算。
+                return CountNodes(root.left) + (1 << right);
+            }
+        }
+        public class TreeNode
+        {
+            public int val;
+            public TreeNode left;
+            public TreeNode right;
+            public TreeNode(int x) { val = x; }
+        }
+        /// <summary>
+        /// 计算二叉树层级
+        /// </summary>
+        /// <param name="root"></param>
+        /// <returns></returns>
+        private static int countLevel(TreeNode root)
+        {
+            int level = 0;
+            while (root != null)
+            {
+                level++;
+                root = root.left;
+            }
+            return level;
         }
     }
 }
