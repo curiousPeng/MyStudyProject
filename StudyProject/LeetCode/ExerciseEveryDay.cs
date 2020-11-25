@@ -137,5 +137,55 @@ namespace LeetCode
             }
             return level;
         }
+        /// <summary>
+        /// 上升下降字符串
+        /// 从 s 中选出 最小 的字符，将它 接在 结果字符串的后面。
+        ///从 s 剩余字符中选出 最小 的字符，且该字符比上一个添加的字符大，将它 接在 结果字符串后面。
+        ///重复步骤 2 ，直到你没法从 s 中选择字符。
+        ///从 s 中选出 最大 的字符，将它 接在 结果字符串的后面。
+        ///从 s 剩余字符中选出 最大 的字符，且该字符比上一个添加的字符小，将它 接在 结果字符串后面。
+        ///重复步骤 5 ，直到你没法从 s 中选择字符。
+        ///重复步骤 1 到 6 ，直到 s 中所有字符都已经被选过
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static string SortString(string s)
+        {
+            if (string.IsNullOrEmpty(s))
+            {
+                return s;
+            }
+
+            List<char> res = new List<char>();
+            int[] num = new int[26];
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                num[s[i] - 'a']++;
+            }
+
+            while (res.Count < s.Length)
+            {
+                for (int i = 0; i < 26; i++)
+                {
+                    if (num[i] > 0)
+                    {
+                        res.Add((char)('a' + i));
+                        num[i]--;
+                    }
+                }
+
+                for (int i = 25; i >= 0; i--)
+                {
+                    if (num[i] > 0)
+                    {
+                        res.Add((char)('a' + i));
+                        num[i]--;
+                    }
+                }
+            }
+
+            return res.ToString();
+        }
     }
 }

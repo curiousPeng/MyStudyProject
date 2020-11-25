@@ -6,9 +6,9 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            int[] str = { -1, 0, 1, 2, -1, -4 };
+            var str = "abcasdasdasdasdasdasdasdasdasdasdadsadsasdasdasdasd";
 
-           var a= Algorithms.ThreeSum(str);
+           var a= ExerciseEveryDay.SortString(str);
 
             Console.WriteLine("program execute finish！");
             Console.Read();
