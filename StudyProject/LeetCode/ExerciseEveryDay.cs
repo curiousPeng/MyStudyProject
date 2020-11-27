@@ -123,7 +123,7 @@ namespace LeetCode
             public TreeNode(int x) { val = x; }
         }
         /// <summary>
-        /// 计算二叉树层级
+        /// 2020-11-24 计算二叉树层级
         /// </summary>
         /// <param name="root"></param>
         /// <returns></returns>
@@ -138,7 +138,7 @@ namespace LeetCode
             return level;
         }
         /// <summary>
-        /// 上升下降字符串
+        /// 2020-11-25 上升下降字符串
         /// 从 s 中选出 最小 的字符，将它 接在 结果字符串的后面。
         ///从 s 剩余字符中选出 最小 的字符，且该字符比上一个添加的字符大，将它 接在 结果字符串后面。
         ///重复步骤 2 ，直到你没法从 s 中选择字符。
@@ -186,6 +186,92 @@ namespace LeetCode
             }
 
             return res.ToString();
+        }
+        /// <summary>
+        /// 2020-11-26 最大间距
+        /// 给定一个无序的数组，找出数组在排序之后，相邻元素之间最大的差值。
+        ///如果数组元素个数小于 2，则返回 0。
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public static int MaximumGap(int[] nums)
+        {
+            int n = nums.Length;
+            if (n < 2)
+            {
+                return 0;
+            }
+            long exp = 1;
+            int[] buf = new int[n];
+            int maxVal = nums.Max();
+            while (maxVal >= exp)
+            {
+                int[] cnt = new int[10];
+                for (int i = 0; i < n; i++)
+                {
+                    int digit = (nums[i] / (int)exp) % 10;
+                    cnt[digit]++;
+                }
+                for (int i = 1; i < 10; i++)
+                {
+                    cnt[i] += cnt[i - 1];
+                }
+                for (int i = n - 1; i >= 0; i--)
+                {
+                    int digit = (nums[i] / (int)exp) % 10;
+                    buf[cnt[digit] - 1] = nums[i];
+                    cnt[digit]--;
+                }
+                Array.Copy(buf, 0, nums, 0, n);
+                exp *= 10;
+            }
+
+            int ret = 0;
+            for (int i = 1; i < n; i++)
+            {
+                ret = Math.Max(ret, nums[i] - nums[i - 1]);
+            }
+            return ret;
+        }
+
+        /// <summary>
+        /// 四数相加
+        /// 给定四个包含整数的数组列表 A , B , C , D ,计算有多少个元组 (i, j, k, l) ，使得 A[i] + B[j] + C[k] + D[l] = 0。
+        ///为了使问题简单化，所有的 A, B, C, D 具有相同的长度 N，且 0 ≤ N ≤ 500 。所有整数的范围在 -228 到 228 - 1 之间，最终结果不会超过 231 - 1 
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <param name="C"></param>
+        /// <param name="D"></param>
+        /// <returns></returns>
+        public static int fourSumCount(int[] A, int[] B, int[] C, int[] D)
+        {
+            Dictionary<int, int> dic = new Dictionary<int, int>();
+            int res = 0;
+            for (int i = 0; i < A.Length; i++)
+            {
+                for (int j = 0; j < B.Length; j++)
+                {
+                    int sum = A[i] + B[j];
+                    if (dic.ContainsKey(sum))
+                    {
+                        dic[sum] = dic.GetValueOrDefault(sum) + 1;
+                    }
+                    else
+                    {
+                        dic.Add(sum, 1);
+                    }
+                }
+            }
+            for (int i = 0; i < C.Length; i++)
+            {
+                for (int j = 0; j < D.Length; j++)
+                {
+                    int sumCD = -(C[i] + D[j]);
+                    if (dic.ContainsKey(sumCD)) res += dic.GetValueOrDefault(sumCD);
+                }
+            }
+            return res;
         }
     }
 }

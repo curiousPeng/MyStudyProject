@@ -6,10 +6,11 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            var str = "abcasdasdasdasdasdasdasdasdasdasdadsadsasdasdasdasd";
+            int[] str = { 3, 6, 9, 1 };
 
-           var a= ExerciseEveryDay.SortString(str);
+            var a= ExerciseEveryDay.MaximumGap(str);
 
+            Console.WriteLine(a);
             Console.WriteLine("program execute finish！");
             Console.Read();
         }
