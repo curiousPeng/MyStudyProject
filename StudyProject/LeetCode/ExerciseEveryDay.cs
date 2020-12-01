@@ -235,7 +235,7 @@ namespace LeetCode
         }
 
         /// <summary>
-        /// 四数相加
+        /// 2020-11-27 四数相加
         /// 给定四个包含整数的数组列表 A , B , C , D ,计算有多少个元组 (i, j, k, l) ，使得 A[i] + B[j] + C[k] + D[l] = 0。
         ///为了使问题简单化，所有的 A, B, C, D 具有相同的长度 N，且 0 ≤ N ≤ 500 。所有整数的范围在 -228 到 228 - 1 之间，最终结果不会超过 231 - 1 
         /// </summary>
@@ -272,6 +272,168 @@ namespace LeetCode
                 }
             }
             return res;
+        }
+        /// <summary>
+        /// 2020-11-30 给定一个字符串S，检查是否能重新排布其中的字母，使得两相邻的字符不同。
+        ///若可行，输出任意可行的结果。若不可行，返回空字符串 12.1才解出答案。
+        /// </summary>
+        /// <param name="S"></param> 
+        /// <returns></returns>
+        public static string ReorganizeString(string S)
+        {
+            var len = S.Length;
+            if (len < 2)
+            {
+                return "";
+            }
+            Dictionary<char, int> heap = S.GroupBy(x => x)
+                    .OrderByDescending(x => x.Count())
+                    .ToDictionary(x => x.Key, x => x.Count());
+            var max = heap.First();//最多的那个
+            if (len % 2 == 0)
+            {//偶数
+                if (max.Value > (len / 2))
+                {
+                    return "";
+                }
+            }
+            else
+            {//奇数
+                if (max.Value > ((len + 1) / 2))
+                {
+                    return "";
+                }
+            }
+            string result = string.Empty;
+            while (result.Length < len)
+            {
+
+                int c = 0;
+                for (int j = 0; j < heap.Count; j++)
+                {
+                    var item = heap.ElementAt(j);
+                    if (item.Value > 0)
+                    {
+                        c++;
+                        if (result.Length > 0 && result[result.Length - 1] == item.Key)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            result = string.Format("{0}{1}", result, item.Key);
+                            heap[item.Key] = heap[item.Key] - 1;
+
+                            if (c >= 2)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                }
+                var over = len - result.Length;
+                if (over > 1 && over == heap.Last().Value)
+                {//说明剩最后重复的几个了
+                    break;
+                }
+            }
+            var last = heap.Last();
+            for (var i = 0; i < result.Length; i++)
+            {
+                if (heap[last.Key] < 1)
+                {
+                    break;
+                }
+                if (result[i] != last.Key)
+                {
+                    result = string.Format("{0}{1}{2}", result.Substring(0, i + 1), last.Key, result.Substring(i + 1, result.Length - i - 1));
+                    heap[last.Key] = heap[last.Key] - 1;
+                }
+            }
+            return result;
+        }
+        /// <summary>
+        /// 2020-12-01给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。
+        ///如果数组中不存在目标值 target，返回[-1, -1]
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        public static int[] SearchRange(int[] nums, int target)
+        {
+            int[] result = new int[2] { -1, -1 };
+            if (nums.Length < 1)
+            {
+                return result;
+            }
+            if (nums.Length == 1)
+            {
+                if (nums[0] != target)
+                {
+                    return result;
+                }
+                result[0] = 0;
+                result[1] = 0;
+                return result;
+            }
+            var left = 0;
+            var right = nums.Length - 1;
+            while (left <= right)
+            {
+
+                if (nums[left] == target)
+                {
+                    if (result[0] == -1)
+                    {
+                        result[0] = left;
+                    }
+                    else
+                    {
+                        if (result[0] > left)
+                        {
+                            result[0] = left;
+                        }
+                        if (result[1] < left)
+                        {
+                            result[1] = left;
+                        }
+                    }
+
+                }
+                if (nums[right] == target)
+                {
+                    if (result[1] == -1)
+                    {
+                        result[1] = right;
+                    }
+                    else
+                    {
+                        if (result[0] == -1)
+                        {
+                            result[0] = right;
+                        }
+                        if (result[0] > right)
+                        {
+                            result[0] = right;
+                        }
+                        if (result[1] < right)
+                        {
+                            result[1] = right;
+                        }
+                    }
+                }
+                left++;
+                right--;
+            }
+            if (result[0] != -1 && result[1] == -1)
+            {
+                result[1] = result[0];
+            }
+            if (result[1] != -1 && result[0] == -1)
+            {
+                result[0] = result[1];
+            }
+            return result;
         }
     }
 }
