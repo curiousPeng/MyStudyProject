@@ -436,7 +436,7 @@ namespace LeetCode
             return result;
         }
         /// <summary>
-        /// 给定长度分别为 m 和 n 的两个数组，其元素由 0-9 构成，表示两个自然数各位上的数字。
+        /// 2020-12-02给定长度分别为 m 和 n 的两个数组，其元素由 0-9 构成，表示两个自然数各位上的数字。
         /// 现在从这两个数组中选出 k (k <= m + n) 个数字拼接成一个新的数，
         /// 要求从同一个数组中取出的数字保持其在原数组中的相对顺序。
         ///求满足该条件的最大数。结果返回一个表示该最大数的长度为 k 的数组
@@ -462,7 +462,6 @@ namespace LeetCode
             }
             return maxSubsequence;
         }
-
         private static int[] PickMax(int[] nums, int k)
         {
             int length = nums.Length;
@@ -515,7 +514,6 @@ namespace LeetCode
             }
             return merged;
         }
-
         private static int compare(int[] subsequence1, int index1, int[] subsequence2, int index2)
         {
             int x = subsequence1.Length, y = subsequence2.Length;
@@ -530,6 +528,38 @@ namespace LeetCode
                 index2++;
             }
             return (x - index1) - (y - index2);
+        }
+        /// <summary>
+        /// 2020-12-03统计所有小于非负整数 n 的质数的数量。
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public static int CountPrimes(int n)
+        {
+            if (n < 3)
+            {
+                return 0;
+            }
+            int ans = 1;
+            for (int i = 3; i < n; ++i)
+            {
+                if ((i & 1) == 0)
+                    continue;
+                ans += IsPrime(i) ? 1 : 0;
+            }
+            return ans;
+        }
+
+        public static bool IsPrime(int x)
+        {
+            for (int i = 3; i * i <= x; i += 2)
+            {
+                if (x % i == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
