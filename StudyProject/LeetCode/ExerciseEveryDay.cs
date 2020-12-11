@@ -550,7 +550,7 @@ namespace LeetCode
             return ans;
         }
 
-        public static bool IsPrime(int x)
+        private static bool IsPrime(int x)
         {
             for (int i = 3; i * i <= x; i += 2)
             {
@@ -560,6 +560,139 @@ namespace LeetCode
                 }
             }
             return true;
+        }
+
+        /// <summary>
+        /// 给你一个按升序排序的整数数组 num（可能包含重复数字）
+        /// 请你将它们分割成一个或多个子序列，
+        /// 其中每个子序列都由连续整数组成且长度至少为 3 。
+        ///如果可以完成上述分割，则返回 true ；否则，返回 false 。
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public static bool IsPossible(int[] nums)
+        {
+            if (nums.Length < 3)
+            {
+                return false;
+            }
+            //新建两个字典
+            Dictionary<int, int> dic1 = new Dictionary<int, int>(); //存储原数组中数字i出现的次数
+            Dictionary<int, int> dic2 = new Dictionary<int, int>();//存储以数字i结尾的且符合题意的连续子序列个数
+            //以nums =[1, 2, 3, 3, 4, 4, 5]
+            //初始化：dic1[1] = 1、dic1[2] = 1、dic1[3] = 2、dic1[4] = 2、dic1[5] = 1，dic2[i]都为0
+            foreach (var item in nums)
+            {
+                if (dic1.ContainsKey(item))
+                {
+                    dic1[item]++;
+                }
+                else
+                {
+                    dic1.Add(item, 1);
+                }
+            }
+            foreach (var item in nums)
+            {
+                //检查数字 1, dic1[1] > 0,并且 dic1[2]> 0,dic1[3] > 0，因此找到了一个长度为3的连续子序列 dic1[1]、dic1[2]、dic1[3] 各自减一，并 dic2[3] 加 1
+                int count = dic1[item];
+                if (count > 0)
+                {
+                    //判断item上一个结尾
+                    int prevCount = dic2.GetValueOrDefault(item - 1, 0);
+                    //如果大于0就就把item接到dic2上,dic2[item-1]-1;dic2[item]+1
+                    if (prevCount > 0)
+                    {
+                        dic1[item] = count - 1;
+                        if (dic2.ContainsKey(item - 1))
+                        {
+                            dic2[item - 1] = prevCount - 1;
+                        }
+                        else
+                        {
+                            dic2.Add(item - 1, prevCount - 1);
+                        }
+                        if (dic2.ContainsKey(item))
+                        {
+                            dic2[item] = dic2.GetValueOrDefault(item, 0) + 1;
+                        }
+                        else
+                        {
+                            dic2.Add(item, dic2.GetValueOrDefault(item, 0) + 1);
+                        }
+
+                    }
+                    else
+                    {
+                        //但是 dic2[2]=0，因此不能接在前面，只能往后看(如果后面组不成，那就返回 false了)
+                        int count1 = dic1.GetValueOrDefault(item + 1, 0);
+                        int count2 = dic1.GetValueOrDefault(item + 2, 0);
+                        if (count1 > 0 && count2 > 0)
+                        {
+                            //实际发现 dic1[4]>0,dic1[5]>0，因此找到了一个长度为3的连续子序列 dic1[3]、dic1[4]、dic1[5] 各自减一，并 dic2[5] 加 1
+                            dic1[item] = count - 1;
+                            dic1[item + 1] = count1 - 1;
+                            dic1[item + 2] = count2 - 1;
+                            if (dic2.ContainsKey(item + 2))
+                            {
+                                dic2[item + 2] = dic2[item + 2] + 1;
+                            }
+                            else
+                            {
+                                dic2.Add(item + 2, 1);
+                            }
+
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="senate"></param>
+        /// <returns></returns>
+        public static string PredictPartyVictory(string senate)
+        {
+            Queue<int> R = new Queue<int>();
+            Queue<int> D = new Queue<int>();
+            for(var i = 0; i < senate.Length; i++)
+            {
+                if (senate[i] == 'R')
+                {
+                    R.Enqueue(i);
+                }
+                else
+                {
+                    D.Enqueue(i);
+                }
+            }
+
+            while (R.Count > 0 && D.Count > 0)
+            {
+                var a = R.Dequeue();
+                var b = D.Dequeue();
+                if (a < b)
+                {
+                    R.Enqueue(senate.Length + a);
+                }
+                else
+                {
+                    D.Enqueue(senate.Length + b);
+                }
+            }
+            if (R.Count > 0)
+            {
+                return "Radiant";
+            }else
+            {
+                return "Dire";
+            }
         }
     }
 }
