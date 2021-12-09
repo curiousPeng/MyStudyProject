@@ -17,11 +17,23 @@ namespace OldFramework.MSMQ
 
             if (!MessageQueue.Exists(queuePath))//是否存在
             {
-                MessageQueue.Create(queuePath);
+                MessageQueue.Create(queuePath, true);
             }
+            MessageQueueTransaction myTransaction = new
+              MessageQueueTransaction();
             MessageQueue queue = new MessageQueue(queuePath);
-            queue.Send(data);
 
+            try
+            {
+                myTransaction.Begin();
+                queue.Send(data, myTransaction);
+                myTransaction.Commit();
+            }
+            catch (Exception e)
+            {
+                myTransaction.Abort();
+                throw e;
+            }
         }
         public static void ReceiveMessage()
         {
@@ -32,20 +44,25 @@ namespace OldFramework.MSMQ
             }
             MessageQueue queue = new MessageQueue(queuePath);
             queue.Formatter = new XmlMessageFormatter(new Type[] { typeof(Order) });
+            MessageQueueTransaction myTransaction = new
+               MessageQueueTransaction();
             try
             {
+                myTransaction.Begin();
                 // Receive and format the message.
-                Message myMessage = queue.Receive();
+                Message myMessage = queue.Receive(myTransaction);
                 Order myOrder = (Order)myMessage.Body;
-
+                myTransaction.Commit();
+                //throw new Exception("11");
                 // Display message information.
-                Console.WriteLine("收到消息Order ID: " +
+                Console.WriteLine("收到消息Order Id: " +
                     myOrder.orderId.ToString());
             }
             // Handle invalid serialization format.
             catch (InvalidOperationException e)
             {
                 Console.WriteLine(e.Message);
+                myTransaction.Abort();
             }
 
             // Catch other exceptions as necessary.

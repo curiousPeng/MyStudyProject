@@ -6,7 +6,8 @@ namespace CSharp9Features
     {
         static void Main(string[] args)
         {
-            FeaturesDemo.ForeachDemo();
+            //FeaturesDemo.ForeachDemo();
+            RecordDemo.demo();
             Console.WriteLine("Hello World!");
             Console.ReadLine();
         }
